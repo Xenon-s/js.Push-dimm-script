@@ -51,43 +51,27 @@ createTrigger(arrChecked);
 async function checkInput() {
     let arrTemp = [];
     for (const i in arrOriginal) {
-        console.warn(JSON.stringify(arrOriginal[i]));
         if (getObject(arrOriginal[i].pathBrightness) !== null) {
-            console.warn(1);
             if (getObject(arrOriginal[i].pathSchalter) !== null) {
-                console.warn(2);
-
                 if (getObject(arrOriginal[i].pathLampe) !== null) {
-                    console.warn(3);
-
                     arrOriginal[i].intervall = null;
                     arrTemp.push(arrOriginal[i]);
                     if (getObject(arrOriginal[i].pathZustand) === null) {
-                        console.warn(4);
-
                         createState(`${arrOriginal[i].pathZustand}`, JSON.parse('{"type":"string", "read":true, "def":"up", "write": false}'), function (str) {
                         });
                     };
-                    console.warn(9);
 
                     arrOriginal[i].Intervall = null;
                 } else {
-                    console.warn(5);
 
                     delete arrOriginal[i];
                 };
             } else {
-                console.warn(6);
-
                 delete arrOriginal[i];
             };
         } else {
-            console.warn(7);
-
             delete arrOriginal[i];
         };
-        console.warn(8);
-
     };
     return arrTemp;
 
